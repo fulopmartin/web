@@ -78,19 +78,46 @@ img {
     height: auto;
 }
 
+.video {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 10px;
+}
+
+.video-item {
+    flex: 1;
+    min-width: 320px;
+    max-width: 500px;
+}
+
+.videolejatszas {
+    width: 100%;       
+    aspect-ratio: 16 / 9; 
+    border-radius: 8px;  
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
 @media screen and (max-width: 600px) {
     nav ul {
         flex-direction: column;
     }
-    
+
     div#content img {
         float: none;
         display: block;
         margin: 10px auto;
         width: 100%;
     }
-    
+
     header, nav, div#content, footer {
         margin: 5px;
+    }
+
+    .video-item {
+        min-width: 100%;
+        max-width: 100%;
     }
 }

@@ -11,10 +11,20 @@
 </head>
 <body>
 	<header>
+		 
+
 		<img src="./images/<?=$fejlec['kepforras']?>" alt="<?=$fejlec['kepalt']?>">
 		<h1><?= $fejlec['cim'] ?></h1>
 		<?php if (isset($fejlec['motto'])) { ?><h2><?= $fejlec['motto'] ?></h2><?php } ?>
-		<?php if(isset($_SESSION['login'])) { ?>Bejlentkezve: <strong><?= $_SESSION['csn']." ".$_SESSION['un']." (".$_SESSION['login'].")" ?></strong><?php } ?>
+
+		<div id="user">
+    		<?php if(isset($_SESSION['login'])) { ?>
+        	Bejelentkezett: 
+        	<strong>
+            	<?= $_SESSION['csn'] . " " . $_SESSION['un'] . " (" . $_SESSION['login'] . ")" ?>
+        	</strong>
+    		<?php } ?>
+		</div>
 	</header>
     <div id="wrapper">
         <aside id="nav">
