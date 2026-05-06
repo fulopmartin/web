@@ -1,9 +1,12 @@
 <section>
+<!-- FŐOLDAL-->
     <h1 align="center">Üdvözöljük a weboldalunkon!</h1>
-    <h3>Ez az oldal a Web-programozás 1 gyakorlati beadandó projektfeladatunk, melyet Elek Dániel - XZN3PZ és Fülöp Martin - EMD87F készített. Az oldal alapjául - a feladatkiírásnak megfelelően - 
-       a Web-programozas-1-gyakorlat.pdf fájlból a 7. gyakorlaton tanult PHP tervezési minta második megoldását alkalmaztuk. Az oldalon talál egy menüt, mely Főoldal, Képek, Kapcsolat, CRUD, és Bejelentkezés menüpontokból áll, továbbá két videót, illetve egy Google maps térképet, ami a ami megmutatja a választott weboldal fizikai címét
-
-    </h3>
+    <h2>Ez az oldal a Web-programozás 1 gyakorlati beadandó projektfeladatunk, melyet Elek Dániel - XZN3PZ és Fülöp Martin - EMD87F készített. Az oldal alapjául - a feladatkiírásnak megfelelően - 
+       a Web-programozas-1-gyakorlat.pdf fájlból a 7. gyakorlaton tanult PHP tervezési minta második megoldását alkalmaztuk. Az oldalon talál egy menüt, mely Főoldal, Képek, Kapcsolat, CRUD, és Bejelentkezés menüpontokból áll. A Főoldalon található egy rövid ismertető - amit jelenleg olvas -, két videó, illetve egy Google maps térkép, ami megmutatja a választott weboldal fizikai címét.
+       A képek menüpontra kattintva képek feltöltésére van lehetőség, de ez a funkció csak bejelentkezett felhasználók számára érhető el. 
+       A Kapcsolat menüpont alatt egy űrlapot talál, melynek segítségével üzenetet küldhet nekünk. 
+       A CRUD menüpont alatt az importált adatbázis adatait tudja megtekinteni, szerkeszteni, adatokat hozzáadni, vagy épp törölni.
+    </h2>
 
    <div class="video">
     <div class="video-item">

@@ -21,32 +21,47 @@ aside {
 }
 
 nav {
-    margin: 0px 10px 0px 0px;
-    top: 0px;
-    border-radius: 10px;
     background-color: #FF6600;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 nav ul {
     list-style-type: none;
-    margin: 0px;
-    padding: 15px 0px;
+    margin: 0;
+    padding: 0;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-evenly; 
+    align-items: center;
 }
 
-nav ul li {
-    padding: 0px 15px;;
-}
-
-nav ul li.active {
-    border-right: none;
-    border-bottom: 5px solid blue;
+nav li {
+    margin: 0;
+    flex: 1;
+    text-align: center;
 }
 
 nav ul a {
+    display: block;
+    padding: 15px 0px;
     text-decoration: none;
-    color: blue;
+    color: #00008B;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav ul a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+nav ul li.active {
+    border-bottom: 5px solid blue;
+}
+
+nav ul li.active a {
+    color: white;
 }
 
 div#content {
