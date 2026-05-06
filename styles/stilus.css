@@ -15,8 +15,9 @@ div#wrapper {
 }
 
 aside {
-    display: table-cell;
-    vertical-align: top;
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 nav {
@@ -30,6 +31,8 @@ nav ul {
     list-style-type: none;
     margin: 0px;
     padding: 15px 0px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 nav ul li {
@@ -37,7 +40,8 @@ nav ul li {
 }
 
 nav ul li.active {
-    border-right: 5px solid blue;
+    border-right: none;
+    border-bottom: 5px solid blue;
 }
 
 nav ul a {
@@ -46,8 +50,8 @@ nav ul a {
 }
 
 div#content {
-    display: table-cell;
-    width: 100%;
+    display: block;
+    width: auto;
     border-radius: 10px;
     background-color: #99FFCC;
     padding: 15px;
@@ -67,4 +71,26 @@ footer {
     margin: 10px;
     padding: 5px 20px;
     background-color: #CC99FF;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media screen and (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+    }
+    
+    div#content img {
+        float: none;
+        display: block;
+        margin: 10px auto;
+        width: 100%;
+    }
+    
+    header, nav, div#content, footer {
+        margin: 5px;
+    }
 }
