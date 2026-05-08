@@ -1,6 +1,80 @@
-<h2>Adatok:</h2>
-<p>Ügyvezető: <strong>Valaki Az</strong></p>
-<p>E-mail: <strong>valaki.az@minihonlap.hu</strong></p>
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2726.3375296155727!2d19.66695091525771!3d46.89607994478184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4743da7a6c479e1d%3A0xc8292b3f6dc69e7f!2sPallasz+Ath%C3%A9n%C3%A9+Egyetem+GAMF+Kar!5e0!3m2!1shu!2shu!4v1475753185783" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-<br>
-<a target="_blank" href="https://www.google.hu/maps/place/Pallasz+Ath%C3%A9n%C3%A9+Egyetem+GAMF+Kar/@46.8960799,19.6669509,17z/data=!3m1!4b1!4m5!3m4!1s0x4743da7a6c479e1d:0xc8292b3f6dc69e7f!8m2!3d46.8960763!4d19.6691396?hl=hu">Nagyobb térkép</a>
+<section class="contact-page">
+    <h2>Kapcsolat</h2>
+    
+    <div class="contact-layout">
+        <div class="contact-form-box">
+            <h3>Küldjön nekünk üzenetet!</h3>
+            <form id="contactForm" action="index.php?oldal=kapcsolat_mentes" method="post" novalidate>
+                <div class="input-group">
+                    <label for="nev">Név:</label>
+                    <input type="text" id="nev" name="nev">
+                    <span id="err_nev" class="error-msg"></span>
+                </div>
+
+                <div class="input-group">
+                    <label for="email">E-mail cím:</label>
+                    <input type="text" id="email" name="email">
+                    <span id="err_email" class="error-msg"></span>
+                </div>
+
+                <div class="input-group">
+                    <label for="szoveg">Üzenet:</label>
+                    <textarea id="szoveg" name="szoveg" rows="5"></textarea>
+                    <span id="err_szoveg" class="error-msg"></span>
+                </div>
+
+                <button type="submit" class="btn-send">Üzenet küldése</button>
+            </form>
+        </div>
+
+        <div class="visual-guide-box">
+             <h3>Itt talál meg minket</h3>
+             <div class="visual-guide">
+                <img src="./images/epulet.jpg" alt="Ezt keresse" class="guide-img">
+                <div class="guide-label">EZT KERESSE!</div>
+            </div>
+            <div class="google-map" style="margin-top:20px;">
+                <iframe src="http://googleusercontent.com/maps.google.com/5" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.getElementById('contactForm').onsubmit = function(e) {
+    let valid = true;
+ 
+    document.querySelectorAll('.error-msg').forEach(el => el.innerText = '');
+
+    const nev = document.getElementById('nev').value.trim();
+    if (nev.length < 3) {
+        document.getElementById('err_nev').innerText = 'A név túl rövid (min. 3 karakter)!';
+        valid = false;
+    }
+
+    const email = document.getElementById('email').value.trim();
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!re.test(email)) {
+        document.getElementById('err_email').innerText = 'Érvénytelen e-mail formátum!';
+        valid = false;
+    }
+
+    const szoveg = document.getElementById('szoveg').value.trim();
+    if (szoveg.length < 10) {
+        document.getElementById('err_szoveg').innerText = 'Az üzenet túl rövid (min. 10 karakter)!';
+        valid = false;
+    }
+
+    if (!valid) {
+        e.preventDefault();
+    }
+};
+</script>
+
+<style>
+    .input-group { margin-bottom: 15px; }
+    .input-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+    .input-group input, .input-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+    .error-msg { color: #e74c3c; font-size: 0.85rem; font-weight: bold; display: block; margin-top: 3px; }
+    .btn-send { background: var(--foci-zold); color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; width: 100%; font-weight: bold; }
+</style>
