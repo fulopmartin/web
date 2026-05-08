@@ -1,70 +1,128 @@
-header {
-    border-radius: 10px;
-    background-color: yellow;
-    padding: 10px;
-    margin: 10px;
+:root {
+    --stadium-green: #2ecc71;
+    --stadium-dark: #1a1a1a;
+    --stadium-gray: #2c3e50;
+    --stadium-light: #f8f9fa;
+    --accent-color: #27ae60;
+    --shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-header img {
-    float: left;
-    margin: 20px 10px 0px 10px;
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--stadium-light);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-div#wrapper {
-    margin: 10px;
+
+.main-header {
+    background: linear-gradient(135deg, var(--stadium-dark) 0%, var(--stadium-gray) 100%);
+    color: white;
+    padding: 1.5rem 5%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-aside {
-    display: table-cell;
-    vertical-align: top;
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-nav {
-    margin: 0px 10px 0px 0px;
-    top: 0px;
-    border-radius: 10px;
-    background-color: #FF6600;
+.logo-section { display: flex; align-items: center; gap: 20px; }
+.header-logo { height: 60px; filter: drop-shadow(0 0 5px var(--stadium-green)); }
+.title-group h1 { font-size: 1.8rem; letter-spacing: 1px; color: var(--stadium-green); }
+.motto { font-size: 0.9rem; color: #bbb; font-style: italic; }
+
+.status-badge {
+    background: rgba(255,255,255,0.1);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    border: 1px solid var(--stadium-green);
 }
 
-nav ul {
-    list-style-type: none;
-    margin: 0px;
-    padding: 15px 0px;
+.status-badge.guest { border-color: #7f8c8d; color: #bdc3c7; }
+.dot { height: 8px; width: 8px; background-color: var(--stadium-green); border-radius: 50%; display: inline-block; margin-right: 8px; }
+
+
+#wrapper {
+    display: flex;
+    flex: 1;
+    width: 95%;
+    margin: 20px auto;
+    gap: 25px;
 }
 
-nav ul li {
-    padding: 0px 15px;;
+#nav { width: 280px; }
+
+.side-nav {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
 }
 
-nav ul li.active {
-    border-right: 5px solid blue;
-}
-
-nav ul a {
-    text-decoration: none;
-    color: blue;
-}
-
-div#content {
-    display: table-cell;
-    width: 100%;
-    border-radius: 10px;
-    background-color: #99FFCC;
+.nav-title {
+    background: var(--stadium-green);
+    color: white;
     padding: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
 }
 
-div#content img{
-    float: right;
-    width: 20em;
-    height: auto;
-    margin: 0 0 15px 15px;
-    padding: 3px;
-    border: 3px solid blue;
+.side-nav ul { list-style: none; }
+.side-nav li { border-bottom: 1px solid #eee; }
+
+.side-nav a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: var(--stadium-gray);
+    transition: all 0.3s ease;
+    font-weight: 500;
 }
 
-footer {
-    border-radius: 10px;
-    margin: 10px;
-    padding: 5px 20px;
-    background-color: #CC99FF;
+.side-nav a:hover {
+    background: #f1fcf5;
+    color: var(--accent-color);
+    padding-left: 30px;
+}
+
+.side-nav li.active a {
+    background: var(--stadium-green);
+    color: white;
+}
+
+
+#content { flex: 1; }
+.content-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    min-height: 500px;
+}
+
+
+.main-footer {
+    background: var(--stadium-dark);
+    color: #888;
+    padding: 20px;
+    text-align: center;
+    margin-top: auto;
+    font-size: 0.85rem;
+}
+
+.main-footer strong { color: var(--stadium-green); }
+
+
+@media (max-width: 900px) {
+    #wrapper { flex-direction: column; }
+    #nav { width: 100%; }
 }
