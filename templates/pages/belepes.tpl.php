@@ -1,23 +1,23 @@
-    <form action = "belep" method = "post">
-      <fieldset>
-        <legend>Bejlentkezés</legend>
-        <br>
-        <input type="text" name="felhasznalo" placeholder="felhasználó" required><br><br>
-        <input type="password" name="jelszo" placeholder="jelszó" required><br><br>
-        <input type="submit" name="belepes" value="Belépés">
-        <br>&nbsp;
-      </fieldset>
-    </form>
-    <h3>Regisztrálja magát, ha még nem felhasználó!</h2>
-    <form action = "regisztral" method = "post">
-      <fieldset>
-        <legend>Regisztráció</legend>
-        <br>
-        <input type="text" name="vezeteknev" placeholder="vezetéknév" required><br><br>
-        <input type="text" name="utonev" placeholder="utónév" required><br><br>
-        <input type="text" name="felhasznalo" placeholder="felhasználói név" required><br><br>
-        <input type="password" name="jelszo" placeholder="jelszó" required><br><br>
-        <input type="submit" name="regisztracio" value="Regisztráció">
-        <br>&nbsp;
-      </fieldset>
-    </form>
+<div class="auth-container">
+    <div class="login-box">
+        <h3>Bejelentkezés</h3>
+        <form action="index.php?oldal=belep" method="post">
+            <input type="text" name="felhasznalo" placeholder="Felhasználónév" required><br>
+            <input type="password" name="jelszo" placeholder="Jelszó" required><br>
+            <button type="submit">Belépés</button>
+        </form>
+    </div>
+
+    <hr>
+
+    <div class="register-box">
+        <h3>Regisztráció</h3>
+        <form action="index.php?oldal=regisztral" method="post">
+            <input type="text" name="vezeteknev" placeholder="Családi név" required><br>
+            <input type="text" name="utonev" placeholder="Utónév" required><br>
+            <input type="text" name="felhasznalo" placeholder="Felhasználónév" required><br>
+            <input type="password" name="jelszo" placeholder="Jelszó" required><br>
+            <button type="submit">Regisztráció</button>
+        </form>
+    </div>
+</div>
