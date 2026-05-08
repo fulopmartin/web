@@ -27,17 +27,6 @@
             </form>
         </div>
 
-        <div class="visual-guide-box">
-             <h3>Itt talál meg minket</h3>
-             <div class="visual-guide">
-                <img src="./images/epulet.jpg" alt="Ezt keresse" class="guide-img">
-                <div class="guide-label">EZT KERESSE!</div>
-            </div>
-            <div class="google-map" style="margin-top:20px;">
-                <iframe src="http://googleusercontent.com/maps.google.com/5" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-        </div>
-    </div>
 </section>
 
 <script>

@@ -1,25 +1,40 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+$fejlec = $fejlec ?? ['kepforras' => 'logo.png', 'kepalt' => 'Logo', 'cim' => 'Foci weboldal', 'motto' => 'A foci mindenkié!'];
+$lablec = $lablec ?? ['copyright' => 'Copyright 2026', 'ceg' => 'Foci weblap KFT'];
+$ablakcim = $ablakcim ?? ['cim' => 'Foci oldal'];
+
+if (!isset($keres)) {
+    $keres = $oldalak['/'] ?? ['fajl' => 'cimlap'];
+}
+?>
 <!DOCTYPE html>
 <html lang="hu">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $ablakcim['cim'] ?></title>
+    <title><?= htmlspecialchars($ablakcim['cim']) ?></title>
     <link rel="stylesheet" href="./styles/stilus.css" type="text/css">
 </head>
 <body>
     <header class="main-header">
         <div class="container header-content">
             <div class="brand">
-                <img src="./images/<?= $fejlec['kepforras'] ?>" alt="<?= $fejlec['kepalt'] ?>" class="logo">
+                <img src="./images/<?= htmlspecialchars($fejlec['kepforras']) ?>" alt="<?= htmlspecialchars($fejlec['kepalt']) ?>" class="logo">
                 <div class="title-group">
-                    <h1><?= $fejlec['cim'] ?></h1>
-                    <?php if($fejlec['motto']): ?><p class="motto"><?= $fejlec['motto'] ?></p><?php endif; ?>
+                    <h1><?= htmlspecialchars($fejlec['cim']) ?></h1>
+                    <?php if(!empty($fejlec['motto'])): ?>
+                        <p class="motto"><?= htmlspecialchars($fejlec['motto']) ?></p>
+                    <?php endif; ?>
                 </div>
             </div>
             
             <div class="user-info">
                 <?php if(isset($_SESSION['login'])): ?>
-                    Bejelentkezett: <strong><?= $_SESSION['csn']." ".$_SESSION['un'] ?> (<?= $_SESSION['login'] ?>)</strong>
+                    Bejelentkezett: <strong><?= htmlspecialchars($_SESSION['csn']." ".$_SESSION['un']) ?> (<?= htmlspecialchars($_SESSION['login']) ?>)</strong>
                 <?php endif; ?>
             </div>
         </div>
@@ -29,14 +44,17 @@
         <div class="container">
             <ul class="nav-list">
                 <?php foreach ($oldalak as $url => $oldal): ?>
-                    <?php if((!isset($_SESSION['login']) && $oldal['menun'][0]) || (isset($_SESSION['login']) && $oldal['menun'][1])): ?>
-                        <?php if($oldal['szoveg']): ?>
+                    <?php 
+                    $lathato = false;
+                    if (!isset($_SESSION['login']) && isset($oldal['menun'][0]) && $oldal['menun'][0]) $lathato = true;
+                    if (isset($_SESSION['login']) && isset($oldal['menun'][1]) && $oldal['menun'][1]) $lathato = true;
+                    
+                    if ($lathato && !empty($oldal['szoveg'])): ?>
                         <li<?= (($oldal == $keres) ? ' class="active"' : '') ?>>
                             <a href="<?= ($url == '/') ? '.' : "index.php?oldal=$url" ?>">
-                                <?= $oldal['szoveg'] ?>
+                                <?= htmlspecialchars($oldal['szoveg']) ?>
                             </a>
                         </li>
-                        <?php endif; ?>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </ul>
@@ -45,14 +63,21 @@
 
     <main class="container">
         <section class="content-card">
-            <?php include("./templates/pages/{$keres['fajl']}.tpl.php"); ?>
+            <?php 
+                $fajl_utvonal = "./templates/pages/{$keres['fajl']}.tpl.php";
+                if (file_exists($fajl_utvonal)) {
+                    include($fajl_utvonal);
+                } else {
+                    echo "<p>Hiba: A tartalom nem található!</p>";
+                }
+            ?>
         </section>
     </main>
 
     <footer class="main-footer">
         <div class="container footer-flex">
-            <span><?= $lablec['copyright'] ?></span>
-            <strong><?= $lablec['ceg'] ?></strong>
+            <span><?= htmlspecialchars($lablec['copyright']) ?></span>
+            <strong><?= htmlspecialchars($lablec['ceg']) ?></strong>
         </div>
     </footer>
 </body>
