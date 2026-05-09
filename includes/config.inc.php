@@ -12,7 +12,7 @@ $fejlec = array(
 
 $lablec = array(
     'copyright' => 'Copyright '.date("Y").'.',
-    'ceg' => 'Foci honlap Kft.'
+    'ceg' => 'Készítette: Fülöp Martin EMD87F, Elek Dániel XZN3PZ.'
 );
 
 $oldalak = array(
