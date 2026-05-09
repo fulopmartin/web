@@ -2,7 +2,7 @@
 $db_host = "localhost";
 $db_user = "root";
 $db_pass = "";
-$db_name = "foci_adatbazis";
+$db_name = "foci_adatbazisok";
 
 $uzenetek = array();
 

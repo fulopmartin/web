@@ -7,7 +7,7 @@ if(isset($_POST['felhasznalo']) && isset($_POST['jelszo']) && isset($_POST['veze
         $dbh->query('SET NAMES utf8 COLLATE utf8_hungarian_ci');
         
         // Létezik már a felhasználói név?
-        $sqlSelect = "select id from felhasznalo where bejelentkezes = :bejelentkezes";
+        $sqlSelect = "select id from felhasznalok where bejelentkezes = :bejelentkezes";
         $sth = $dbh->prepare($sqlSelect);
         $sth->execute(array(':bejelentkezes' => $_POST['felhasznalo']));
         if($row = $sth->fetch(PDO::FETCH_ASSOC)) {
@@ -16,7 +16,7 @@ if(isset($_POST['felhasznalo']) && isset($_POST['jelszo']) && isset($_POST['veze
         }
         else {
             // Ha nem létezik, akkor regisztráljuk
-            $sqlInsert = "insert into felhasznalo(id, csaladi_nev, uto_nev, bejelentkezes, jelszo)
+            $sqlInsert = "insert into felhasznalok(id, csaladi_nev, uto_nev, bejelentkezes, jelszo)
                           values(0, :csaladinev, :utonev, :bejelentkezes, :jelszo)";
             $stmt = $dbh->prepare($sqlInsert); 
             $stmt->execute(array(':csaladinev' => $_POST['vezeteknev'], ':utonev' => $_POST['utonev'],

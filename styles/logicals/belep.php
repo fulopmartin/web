@@ -2,12 +2,12 @@
 if(isset($_POST['felhasznalo']) && isset($_POST['jelszo'])) {
     try {
         // Kapcsolódás
-        $dbh = new PDO('mysql:host=localhost;dbname=foci_adatbazisok', 'root', '',
+        $dbh = new PDO('mysql:host=localhost;dbname=foci_adatbazis', 'root', '',
                         array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
         $dbh->query('SET NAMES utf8 COLLATE utf8_hungarian_ci');
         
         // Felhsználó keresése
-        $sqlSelect = "select id, csaladi_nev, uto_nev from felhasznalo where bejelentkezes = :bejelentkezes and jelszo = sha1(:jelszo)";
+        $sqlSelect = "select id, csaladi_nev, uto_nev from felhasznalok where bejelentkezes = :bejelentkezes and jelszo = sha1(:jelszo)";
         $sth = $dbh->prepare($sqlSelect);
         $sth->execute(array(':bejelentkezes' => $_POST['felhasznalo'], ':jelszo' => $_POST['jelszo']));
         $row = $sth->fetch(PDO::FETCH_ASSOC);

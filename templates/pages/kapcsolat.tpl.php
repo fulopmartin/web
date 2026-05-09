@@ -1,69 +1,56 @@
-<section class="contact-page">
-    <h2>Kapcsolat</h2>
-    
-    <div class="contact-layout">
-        <div class="contact-form-box">
-            <h3>Küldjön nekünk üzenetet!</h3>
-            <form id="contactForm" action="index.php?oldal=kapcsolat_mentes" method="post" novalidate>
-                <div class="input-group">
-                    <label for="nev">Név:</label>
-                    <input type="text" id="nev" name="nev">
-                    <span id="err_nev" class="error-msg"></span>
-                </div>
+<h2>Kapcsolat</h2>
+<p>Küldjön nekünk üzenetet az alábbi űrlap segítségével!</p>
 
-                <div class="input-group">
-                    <label for="email">E-mail cím:</label>
-                    <input type="text" id="email" name="email">
-                    <span id="err_email" class="error-msg"></span>
-                </div>
+<form id="kapcsolat-form" action="kapcsolat" method="post">
+    <div class="form-group">
+        <input type="text" name="nev" id="nev" placeholder="Az Ön neve">
+        <div id="nev-error" class="error-msg"></div>
+    </div>
 
-                <div class="input-group">
-                    <label for="szoveg">Üzenet:</label>
-                    <textarea id="szoveg" name="szoveg" rows="5"></textarea>
-                    <span id="err_szoveg" class="error-msg"></span>
-                </div>
+    <div class="form-group">
+        <input type="text" name="email" id="email" placeholder="E-mail címe">
+        <div id="email-error" class="error-msg"></div>
+    </div>
 
-                <button type="submit" class="btn-send">Üzenet küldése</button>
-            </form>
-        </div>
+    <div class="form-group">
+        <textarea name="szoveg" id="szoveg" placeholder="Üzenet szövege" rows="5"></textarea>
+        <div id="szoveg-error" class="error-msg"></div>
+    </div>
 
-</section>
-
-<script>
-document.getElementById('contactForm').onsubmit = function(e) {
-    let valid = true;
- 
-    document.querySelectorAll('.error-msg').forEach(el => el.innerText = '');
-
-    const nev = document.getElementById('nev').value.trim();
-    if (nev.length < 3) {
-        document.getElementById('err_nev').innerText = 'A név túl rövid (min. 3 karakter)!';
-        valid = false;
-    }
-
-    const email = document.getElementById('email').value.trim();
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!re.test(email)) {
-        document.getElementById('err_email').innerText = 'Érvénytelen e-mail formátum!';
-        valid = false;
-    }
-
-    const szoveg = document.getElementById('szoveg').value.trim();
-    if (szoveg.length < 10) {
-        document.getElementById('err_szoveg').innerText = 'Az üzenet túl rövid (min. 10 karakter)!';
-        valid = false;
-    }
-
-    if (!valid) {
-        e.preventDefault();
-    }
-};
-</script>
+    <input type="submit" value="Üzenet küldése">
+</form>
 
 <style>
-    .input-group { margin-bottom: 15px; }
-    .input-group label { display: block; margin-bottom: 5px; font-weight: bold; }
-    .input-group input, .input-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
-    .error-msg { color: #e74c3c; font-size: 0.85rem; font-weight: bold; display: block; margin-top: 3px; }
-    .btn-send { background: var(--foci-zold); color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; width: 100%; font-weight: bold; }
+    .error-msg { color: red; font-size: 0.85rem; margin-bottom: 10px; min-height: 1.2rem; }
+    .form-group { margin-bottom: 5px; }
+    input[type="text"], textarea { width: 100%; padding: 8px; margin-bottom: 5px; }
 </style>
+
+<script>
+document.getElementById('kapcsolat-form').onsubmit = function() {
+    let valid = true;
+    const nev = document.getElementById('nev').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const szoveg = document.getElementById('szoveg').value.trim();
+
+    document.querySelectorAll('.error-msg').forEach(el => el.innerText = '');
+
+    if(nev.length < 3) {
+        document.getElementById('nev-error').innerText = "A név túl rövid (min. 3 karakter)!";
+        valid = false;
+    }
+
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(!emailRe.test(email)) {
+        document.getElementById('email-error').innerText = "Kérjük, érvényes e-mail címet adjon meg!";
+        valid = false;
+    }
+    
+    if(szoveg.length < 10) {
+        document.getElementById('szoveg-error').innerText = "Az üzenet túl rövid (min. 10 karakter)!";
+        valid = false;
+    }
+    
+    return valid;
+};
+</script>
