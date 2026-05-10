@@ -1,0 +1,18 @@
+-- 1. Adatbázis létrehozása
+CREATE DATABASE IF NOT EXISTS `bejelentkezesek`
+DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
+
+-- 2. Az adatbázis használata
+USE `bejelentkezesek`;
+
+-- 3. A felhasználók tábla létrehozása
+-- Az oszlopnevek pontosan egyeznek a PHP insert utasításával
+CREATE TABLE IF NOT EXISTS `felhasznalok` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `csaladi_nev` VARCHAR(50) NOT NULL,
+    `uto_nev` VARCHAR(50) NOT NULL,
+    `bejelentkezes` VARCHAR(50) NOT NULL,
+    `jelszo` VARCHAR(40) NOT NULL, -- A sha1() titkosítás mindig 40 karaktert eredményez
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `bejelentkezes_egyedi` (`bejelentkezes`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
